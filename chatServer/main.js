@@ -7,12 +7,14 @@ var time_server_start = new Date().getTime();
  
 // Initialize appication with route / (that means root of the application)
 app.use('/', express.static(__dirname));
-app.get('/', function(req, res){		  
+app.get('/', function(req, res){
+	io.emit('test', { 'Hello': 'World' });
 	  res.sendFile('index.html');
 	});
  
 // Register events on socket connection
 io.on('connection', function(socket){ 
+	console.log('io.on');
 	socket.on('disconnect', function(){	    
 		
 		    for (var i = 0; i < data_s.length; i++){		    	
@@ -35,6 +37,7 @@ io.on('connection', function(socket){
 		
 	
   socket.on('chatMessage', function(data){
+	  consol.log("ddwww");
 	  data_s = data;
 	  
 	  io.emit('chatMessage', data_s);
@@ -50,7 +53,7 @@ io.on('connection', function(socket){
 
 // Listen application request on port 3000 hey
 http.listen(8080, function(){
-  console.log('listening on *:8080');
+  console.log('listening on *:8080_');
 
 });
 
@@ -62,4 +65,4 @@ function makeid() {
 	    text += possible.charAt(Math.floor(Math.random() * possible.length));
 	  }
 	  return text;
-	}
+}
