@@ -10,7 +10,7 @@ app.get('/', function(req, res){
   res.sendFile(__dirname + '/w3.html');
 });
 
-app.use('/', express.static(__dirname + '/src'));
+app.use('/', express.static(__dirname + '/'));
 
 io.on('connection', function(socket){
   console.log('a user connected');
