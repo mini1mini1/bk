@@ -4,11 +4,13 @@ var http = require('http').Server(app);
 var io = require('socket.io')(http);
 
 
-
-
 app.get('/', function(req, res){
   res.sendFile(__dirname + '/w3.html');
 });
+
+app.get('/test', function(req, res){
+	  res.sendFile(__dirname + '/index.html');
+	});
 
 app.use('/', express.static(__dirname + '/'));
 
@@ -20,6 +22,6 @@ io.on('connection', function(socket){
   });
 });
 
-http.listen(3000, function(){
-  console.log('listening on *:3000');
+http.listen(8000, function(){
+  console.log('listening on *:8000');
 });
