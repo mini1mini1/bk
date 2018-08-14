@@ -3,11 +3,12 @@ var map = L.map('map').setView([37.504, 127.093], 14);
 
 //var map = L.map('map').fitWorld();
 
-L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+	maxZoom: 19,
+	attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 }).addTo(map);
 
-map.locate({setView: true, maxZoom: 16});
+
 
 function onLocationFound(e) {
     var radius = e.accuracy / 2;
@@ -18,4 +19,11 @@ function onLocationFound(e) {
     L.circle(e.latlng, radius).addTo(map);
 }
 
+function onLocationError(e) {
+	alert(e.message);
+}
+
 map.on('locationfound', onLocationFound);
+map.on('locationerror', onLocationError);
+
+map.locate({setView: true, maxZoom: 16});
