@@ -1,0 +1,23 @@
+* {
+    box-sizing: border-box;
+}
+body {
+    padding: 0;
+    margin: 0;
+    
+}
+
+html, body {
+    height: 100%;
+    width: 100vw;    
+}
+
+#map {
+	
+    height: 100%;
+    width: 100vw;
+}
+
+form {z-index:9999; background: #000; padding: 3px; position: fixed; bottom: 0; width: 100%;}
+form input { border: 0; padding: 10px; width: 85%; margin-right: .5%; }
+form button { width: 14%; background: rgb(130, 224, 255); border: none; padding: 10px; }
